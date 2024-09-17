@@ -3,27 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guardians Group Chat</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="chat-container">
-        <div class="username-container" id="usernameContainer">
-            <h2>Set your username</h2>
-            <input type="text" id="usernameInput" placeholder="Enter your username">
-            <button id="setUsernameBtn">Enter Chat</button>
-        </div>
-
-        <div class="chatbox-container" id="chatboxContainer" style="display:none;">
-            <h2>Group Chat 6/7</h2>
-            <div class="chatbox" id="chatbox"></div>
-            <div class="message-input-container">
-                <input type="text" id="messageInput" placeholder="Type a message...">
-                <button id="sendMessageBtn">Send</button>
+        <div class="chat-box">
+            <div class="message-list">
+                <!-- Messages will appear here -->
             </div>
+            <form class="message-form">
+                <input type="text" placeholder="Type a message..." id="messageInput"/>
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
