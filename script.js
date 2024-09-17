@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             messageElement.classList.add("received");
         }
 
-        messageElement.textContent = `${user}: ${message}`;
+        messageElement.textContent = ${user}: ${message};
         chatbox.appendChild(messageElement);
         chatbox.scrollTop = chatbox.scrollHeight;  // Scroll to the bottom
     };
