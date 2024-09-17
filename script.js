@@ -9,23 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let username = "";
 
-    // Load chat history from localStorage
     const loadChatHistory = () => {
         const chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
-        chatbox.innerHTML = "";  // Clear the chatbox
+        chatbox.innerHTML = "";
         chatHistory.forEach(chat => {
             displayMessage(chat.username, chat.message);
         });
     };
 
-    // Save chat history to localStorage
     const saveChat = (username, message) => {
         const chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
         chatHistory.push({ username, message });
         localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
     };
 
-    // Display a message in the chatbox
     const displayMessage = (user, message) => {
         const messageElement = document.createElement("div");
         messageElement.classList.add("message");
@@ -36,12 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
             messageElement.classList.add("received");
         }
 
-        messageElement.textContent = ${user}: ${message};
+        messageElement.textContent = `${user}: ${message}`;
         chatbox.appendChild(messageElement);
-        chatbox.scrollTop = chatbox.scrollHeight;  // Scroll to the bottom
+        chatbox.scrollTop = chatbox.scrollHeight;
     };
 
-    // Set username and show chatbox
     setUsernameBtn.addEventListener("click", function () {
         username = usernameInput.value.trim();
         if (username) {
@@ -53,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Send message
     sendMessageBtn.addEventListener("click", function () {
         const message = messageInput.value.trim();
         if (message) {
@@ -63,13 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Enter key to send message
     messageInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             sendMessageBtn.click();
         }
     });
 
-    // Simulate real-time update: Refresh the chatbox every 1 second
     setInterval(loadChatHistory, 1000);
 });
