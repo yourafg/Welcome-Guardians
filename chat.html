@@ -28,7 +28,7 @@
 
             const loadChatHistory = () => {
                 const chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
-                chatbox.innerHTML = ""; // Clear the chatbox
+                chatbox.innerHTML = "";
                 chatHistory.forEach(chat => {
                     displayMessage(chat.username, chat.message);
                 });
@@ -52,7 +52,7 @@
 
                 messageElement.textContent = `${user}: ${message}`;
                 chatbox.appendChild(messageElement);
-                chatbox.scrollTop = chatbox.scrollHeight; // Scroll to the bottom
+                chatbox.scrollTop = chatbox.scrollHeight;
             };
 
             sendMessageBtn.addEventListener("click", function () {
@@ -60,7 +60,7 @@
                 if (message) {
                     displayMessage(username, message);
                     saveChat(username, message);
-                    messageInput.value = ""; // Clear the input field
+                    messageInput.value = "";
                 }
             });
 
@@ -70,7 +70,6 @@
                 }
             });
 
-            // Load chat history on page load
             loadChatHistory();
         });
     </script>

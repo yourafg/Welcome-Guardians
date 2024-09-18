@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    const clearChat = () => {
+        chatbox.innerHTML = ""; // Clear the chatbox
+        localStorage.removeItem("chatHistory"); // Remove chat history from localStorage
+    };
+
     const displayMessage = (user, message) => {
         const messageElement = document.createElement("div");
         messageElement.classList.add("message");
@@ -47,8 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
     sendMessageBtn.addEventListener("click", function () {
         const message = messageInput.value.trim();
         if (message) {
-            displayMessage(username, message);
-            saveChat(username, message);
+            if (message === "!clear" && (username === "Ms.Laking" || username === "Elyas")) {
+                clearChat();
+            } else {
+                displayMessage(username, message);
+                saveChat(username, message);
+            }
             messageInput.value = ""; // Clear the input field
         }
     });
@@ -62,4 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load chat history on page load
     loadChatHistory();
+
+    // Listen for changes to chat history in other tabs
+    window.addEventListener("storage", (event) => {
+        if (event.key === "chatHistory") {
+            loadChatHistory(); // Reload chat history if it's updated in another tab or device
+        }
+    });
 });
