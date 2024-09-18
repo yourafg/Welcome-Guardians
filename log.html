@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - Guardians Group Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container" id="authContainer">
+        <div class="auth-box" id="authBox">
+            <h2 id="authTitle">Log In to GC</h2>
+            <input type="text" id="authUsername" placeholder="Enter your username">
+            <input type="password" id="authPassword" placeholder="Enter your password">
+            <button id="authBtn">Log In</button>
+            <button id="switchAuthBtn">Not registered? Register here</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const authBox = document.getElementById("authBox");
+            const authBtn = document.getElementById("authBtn");
+            const switchAuthBtn = document.getElementById("switchAuthBtn");
+            const authUsername = document.getElementById("authUsername");
+            const authPassword = document.getElementById("authPassword");
+
+            authBtn.addEventListener("click", function () {
+                const username = authUsername.value.trim();
+                const password = authPassword.value.trim();
+                if (username && password) {
+                    const users = JSON.parse(localStorage.getItem("users")) || [];
+                    const user = users.find(user => user.username === username && user.password === password);
+                    if (user) {
+                        localStorage.setItem("username", username);
+                        window.location.href = "chat.html"; // Redirect to chat page
+                    } else {
+                        alert("Invalid username or password.");
+                    }
+                } else {
+                    alert("Please enter both username and password.");
+                }
+            });
+
+            // Switch to registration page
+            switchAuthBtn.addEventListener("click", function () {
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>

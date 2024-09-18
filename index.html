@@ -3,21 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Guardians Group Chat</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-box">
-            <div class="message-list">
-                <!-- Messages will appear here -->
-            </div>
-            <form class="message-form">
-                <input type="text" placeholder="Type a message..." id="messageInput"/>
-                <button type="submit">Send</button>
-            </form>
+    <div class="auth-container" id="authContainer">
+        <div class="auth-box" id="authBox">
+            <h2 id="authTitle">Register to GC</h2>
+            <input type="text" id="authUsername" placeholder="Enter your username">
+            <input type="password" id="authPassword" placeholder="Enter your password">
+            <button id="authBtn">Register</button>
+            <button id="switchAuthBtn">Already registered? Log in</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="chat-container" id="chatContainer" style="display:none;">
+        <div class="username-container" id="usernameContainer">
+            <h2>Set your username</h2>
+            <input type="text" id="usernameInput" placeholder="Enter your username">
+            <button id="setUsernameBtn">Enter Chat</button>
+        </div>
+
+        <div class="chatbox-container" id="chatboxContainer" style="display:none;">
+            <h2>Group Chat 6/7</h2>
+            <div class="chatbox" id="chatbox"></div>
+            <div class="message-input-container">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button id="sendMessageBtn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const authBox = document.getElementById("authBox");
+            const authBtn = document.getElementById("authBtn");
+            const switchAuthBtn = document.getElementById("switchAuthBtn");
+            const authUsername = document.getElementById("authUsername");
+            const authPassword = document.getElementById("authPassword");
+
+            // Registration functionality
+            authBtn.addEventListener("click", function () {
+                const username = authUsername.value.trim();
+                const password = authPassword.value.trim();
+                if (username && password) {
+                    let users = JSON.parse(localStorage.getItem("users")) || [];
+                    if (users.some(user => user.username === username)) {
+                        alert("Username already exists.");
+                    } else {
+                        users.push({ username, password });
+                        localStorage.setItem("users", JSON.stringify(users));
+                        alert("Registration successful! Please log in.");
+                        window.location.href = "log.html";
+                    }
+                } else {
+                    alert("Please enter both username and password.");
+                }
+            });
+
+            // Switch to login page
+            switchAuthBtn.addEventListener("click", function () {
+                window.location.href = "log.html";
+            });
+        });
+    </script>
 </body>
 </html>

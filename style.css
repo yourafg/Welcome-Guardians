@@ -1,0 +1,140 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Authentication container styles */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.auth-box h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.auth-box input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+}
+
+.auth-box #authPassword {
+    margin-top: 10px;
+}
+
+.auth-box button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-box button:hover {
+    background-color: #0056b3;
+}
+
+.auth-box #switchAuthBtn {
+    margin-top: 10px;
+    background-color: #6c757d;
+}
+
+.auth-box #switchAuthBtn:hover {
+    background-color: #5a6268;
+}
+
+/* Chat container styles */
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+/* Chatbox styles */
+.chatbox {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    height: 400px;
+}
+
+/* Message styles */
+.message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 70%;
+    font-size: 14px;
+}
+
+.message.sent {
+    background-color: #dcf8c6;
+    margin-left: auto;
+    text-align: right;
+}
+
+.message.received {
+    background-color: #fff;
+    margin-right: auto;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Message input styles */
+.message-input-container {
+    display: flex;
+}
+
+#messageInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+
+#sendMessageBtn {
+    border-radius: 0 5px 5px 0;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sendMessageBtn:hover {
+    background-color: #0056b3;
+}
